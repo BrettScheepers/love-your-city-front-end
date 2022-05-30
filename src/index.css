@@ -1,0 +1,13 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+  .btn-primary {
+    @apply text-center cursor-pointer text-white bg-primary hover:bg-primary-accent focus:border-primary-accent;
+  }
+
+  .link {
+    @apply text-primary-accent hover:opacity-60;
+  }
+}
