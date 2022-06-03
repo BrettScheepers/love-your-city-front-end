@@ -16,11 +16,7 @@ const LogIn = () => {
         console.log(res)
 
         if (res.error) return enqueueSnackbar(res.error, {
-            variant: 'error',
-            anchorOrigin: {
-                vertical: 'top',
-                horizontal: 'right',
-            },
+          variant: 'error',
         })
 
         sessionStorage.setItem('accessToken', res.accessToken)

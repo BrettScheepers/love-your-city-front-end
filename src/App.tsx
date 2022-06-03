@@ -9,8 +9,7 @@ import Landing from './routes/home/landing/Landing'
 import LogIn from './routes/home/log-in/LogIn'
 import SignUp from './routes/home/sign-up/SignUp'
 import LearnMore from './routes/home/learn-more/LearnMore'
-import ProtectedRoutes from './routes/protected/ProtectedRoutes';
-import CampaignDashboard from './routes/protected/campaign-dashboard/CampaignDashboard'
+import CampaignDashboard from './routes/campaign-dashboard/CampaignDashboard'
 import { QueryClient, QueryClientProvider } from 'react-query'
 import { SnackbarProvider } from 'notistack'
  
@@ -20,7 +19,12 @@ function App() {
   
 
   return (
-    <SnackbarProvider dense>
+    <SnackbarProvider dense
+      anchorOrigin={{
+        vertical: 'top',
+        horizontal: 'right',
+      }}
+    >
       <QueryClientProvider client={queryClient}>
         <BrowserRouter>
           <Routes>
@@ -30,8 +34,8 @@ function App() {
               <Route path='/sign-up' element={<SignUp />} />
               <Route path='/learn-more' element={<LearnMore />} />
             </Route>
-            <Route path='/campaigns' element={<ProtectedRoutes />}>
-              <Route path='/campaigns' element={<CampaignDashboard />} />
+            <Route path='/campaigns' element={<CampaignDashboard />}>
+              
             </Route>
           </Routes>
         </BrowserRouter>
