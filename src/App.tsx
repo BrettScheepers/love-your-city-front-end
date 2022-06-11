@@ -10,6 +10,7 @@ import LogIn from './routes/home/log-in/LogIn'
 import SignUp from './routes/home/sign-up/SignUp'
 import LearnMore from './routes/home/learn-more/LearnMore'
 import CampaignDashboard from './routes/campaign-dashboard/CampaignDashboard'
+import AllCampaigns from './routes/campaign-dashboard/campaigns/Campaigns'
 import { QueryClient, QueryClientProvider } from 'react-query'
 import { SnackbarProvider } from 'notistack'
  
@@ -35,7 +36,7 @@ function App() {
               <Route path='/learn-more' element={<LearnMore />} />
             </Route>
             <Route path='/campaigns' element={<CampaignDashboard />}>
-              
+              <Route path='/campaigns' element={<AllCampaigns />} />
             </Route>
           </Routes>
         </BrowserRouter>

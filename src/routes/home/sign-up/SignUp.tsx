@@ -13,8 +13,6 @@ const SignUp = () => {
     const handleSubmit = async (values: any) => {
         const res = await useSignUp(values)()
 
-        console.log(res)
-
         if (res.error) return enqueueSnackbar(res.error, {
             variant: 'error',
             anchorOrigin: {
@@ -24,7 +22,7 @@ const SignUp = () => {
         })
 
         sessionStorage.setItem('accessToken', res.accessToken)
-        sessionStorage.setItem('user', JSON.stringify(res.accessToken))
+        sessionStorage.setItem('user', JSON.stringify(res.user))
         navigate('/campaigns')
     }
 
