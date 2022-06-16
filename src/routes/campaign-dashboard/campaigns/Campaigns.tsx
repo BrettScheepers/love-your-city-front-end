@@ -34,22 +34,22 @@ const CampaignCard: React.FunctionComponent<CampaignCardProps> = ({
   }
 
   return (
-    <div className="bg-white shadow p-4 flex flex-col">
+    <div className="bg-white shadow p-6 flex flex-col">
       <div className="flex">
-        {!isMobile && <div className="mr-2 font-medium text-lg text-white bg-primary rounded-full w-14 h-14 flex items-center justify-center">
+        {!isMobile && <div className="mr-2 font-medium text-md text-white bg-primary rounded-full w-12 h-12 flex items-center justify-center">
           {returnFullItemProgressPercentage(campaign_items_item_quantity, donations_item_quantity)}%
         </div>}
         <div className="pr-4">
-          <div className="text-lg leading-5 font-bold">{campaign_title}</div>
-          <div className="text-gray-500">{donations_item_quantity} of {campaign_items_item_quantity} items <br /> raised</div>
+          <div className="text-base leading-5 font-bold">{campaign_title}</div>
+          <div className="text-gray-500 text-sm">{donations_item_quantity} of {campaign_items_item_quantity} items <br /> raised</div>
         </div>
         <div className="ml-auto">
           <div className="text-base leading-5 font-bold">{new Date(end_date).toLocaleDateString()}</div>
-          <div className="text-gray-500 text-sm">End Date</div>
+          <div className="text-gray-500 text-xs">End Date</div>
         </div>
       </div>
       {isMobile && (
-        <div className="mb-2 mt-8 mx-auto font-medium text-lg text-white bg-primary rounded-full w-14 h-14 flex items-center justify-center">
+        <div className="mb-2 mt-8 mx-auto font-medium text-md text-white bg-primary rounded-full w-12 h-12 flex items-center justify-center">
           {returnFullItemProgressPercentage(campaign_items_item_quantity, donations_item_quantity)}%
         </div>
       )}
@@ -58,8 +58,8 @@ const CampaignCard: React.FunctionComponent<CampaignCardProps> = ({
           <div className="bg-primary h-1" style={{ width: returnFullItemProgressPercentage(campaign_items_item_quantity, donations_item_quantity)}}></div>
         </div>
       </div>
-      <div className="w-full mb-4">
-        <Link to={`/campaigns/${campaign_id}`} className="w-full text-center text-primary hover:text-primary-accent text-xl font-medium">
+      <div className="w-full mb-2">
+        <Link to={`/campaigns/${campaign_id}`} className="w-full text-center text-primary hover:text-primary-accent text-lg font-medium">
           <div className="w-full text-center">Show</div>
           <FaChevronDown className="mx-auto mt-2" />
         </Link>
