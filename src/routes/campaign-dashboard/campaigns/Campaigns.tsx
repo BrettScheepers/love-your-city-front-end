@@ -3,6 +3,7 @@ import { useMediaQuery } from 'react-responsive'
 import { FaChevronDown } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
 import { fetchCampaigns } from '../../../apis/campaigns';
+import { Loader } from '../../../shared/Loader';
 
 type CampaignCardProps = {
   campaignData: {
@@ -44,7 +45,7 @@ const CampaignCard: React.FunctionComponent<CampaignCardProps> = ({
           <div className="text-gray-500 text-sm">{donations_item_quantity} of {campaign_items_item_quantity} items <br /> raised</div>
         </div>
         <div className="ml-auto">
-          <div className="text-base leading-5 font-bold">{new Date(end_date).toLocaleDateString()}</div>
+          <div className="text-base leading-5 font-bold">{new Date(end_date).toLocaleDateString('en-GB')}</div>
           <div className="text-gray-500 text-xs">End Date</div>
         </div>
       </div>
@@ -55,7 +56,7 @@ const CampaignCard: React.FunctionComponent<CampaignCardProps> = ({
       )}
       <div className="my-6 w-full">
         <div className="w-full bg-gray-200 h-1">
-          <div className="bg-primary h-1" style={{ width: returnFullItemProgressPercentage(campaign_items_item_quantity, donations_item_quantity)}}></div>
+          <div className="bg-primary h-1" style={{ width: `${returnFullItemProgressPercentage(campaign_items_item_quantity, donations_item_quantity)}%`}}></div>
         </div>
       </div>
       <div className="w-full mb-2">
@@ -73,15 +74,15 @@ const AllCampaigns = () => {
   const accessToken = sessionStorage.accessToken
   const { isLoading, isError, data, error } = fetchCampaigns(userId, accessToken);
 
-  if (isLoading || isError) {
-    return <div>Things</div>
+  if (isLoading) {
+    return <Loader />
   }
 
   return (
     <div className="sm:mx-auto sm:w-full sm:max-w-6xl p-6">
-      <div className="my-8 flex flex-col md:flex-row justify-between">
-        <h1 className="font-bold text-2xl">Monitor your campaigns</h1>
-        <Link to="/campaigns/create" className="btn-primary py-2 px-8 rounded-full">
+      <div className="flex flex-col items-center text-center md:flex-row justify-between">
+        <h1 className="font-bold text-2xl my-2">Monitor your campaigns</h1>
+        <Link to="/campaigns/create" className="btn-primary py-2 px-8 my-8 rounded-full">
           Add Campaign
         </Link>
       </div>
